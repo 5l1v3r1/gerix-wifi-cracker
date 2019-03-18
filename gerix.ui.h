@@ -136,11 +136,6 @@ void main_window::slot_wep_start_rep()
 }
 
 
-
-
-
-
-
 void main_window::slot_wep_test_inj()
 {
 
@@ -195,9 +190,6 @@ void Main_window::slot_wep_start_latte()
 }
 
 
-
-
-
 void Main_window::slot_mac_change()
 {
 
@@ -208,9 +200,6 @@ void Main_window::slot_gath_int()
 {
 
 }
-
-
-
 
 
 void Main_window::slot_save_ap_name()
@@ -361,8 +350,6 @@ void Main_window::slot_autoload_victim_clients()
 {
 
 }
-
-
 
 
 void Main_window::slot_rescan_networks()

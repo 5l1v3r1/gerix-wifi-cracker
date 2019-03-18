@@ -14,17 +14,13 @@
 #
 
 
-
-
 # Don't modify these lines
-#
 import sys
 import os
 import time
 import re
 import commands
 #import subprocess
-
 
 
 #
@@ -115,17 +111,9 @@ def config_end():
 
 
 
-
-
-
-
 #
 # == CONFIGURATION ENDS HERE ==
 #
-
-
-
-
 
 
 

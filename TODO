@@ -1,0 +1,14 @@
+* Change the function on howto get the mac from an adapter in monitor mode. This is the only and most important issue to fix right now!
+  Line #620 in "gerix.py"
+
+  "commands.getstatusoutput('if [ -e ' + config_dir + '.macaddress-backup ]; then echo ""; else ifconfig ' + self.change_mac_int + ' | grep HWaddr | sed \'s/^.*HWaddr //\' > ' + config_dir + '.macaddress-backup;fi"
+
+
+
+
+* Change from "iwconfig" to "iw" or "ip" to get the information,
+  Line #136 in "gerix_config.py"
+
+  "if exec_command('iwconfig 2>&1 | grep 802.11 | grep' + interface):"
+
+
