@@ -888,7 +888,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         # insert a row in the database
         self.table_database.insertRow(0)
         item=QtGui.QTableWidgetItem()
-        item.setText(essid)
+        item.setText(self.essid)
         self.table_database.setItem(0, 0, item)
 
         item=QtGui.QTableWidgetItem()
@@ -973,7 +973,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             self.table_database.insertRow(0)
 
             item=QtGui.QTableWidgetItem()
-            item.setText(essid)
+            item.setText(self.essid)
             self.table_database.setItem(0, 0, item)
 
             item=QtGui.QTableWidgetItem()
