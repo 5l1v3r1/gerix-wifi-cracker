@@ -1,7 +1,8 @@
+* Add "WPS" attacks with support for both "reaver" and "bully"
+
 * Go from python2 to python3
 
 * Go from QT4 to QT5
-
 
 * Change from "iwconfig" to "iw" or "ip" to get the information,
   Line #136 in "gerix_config.py"
