@@ -13,16 +13,17 @@ $ python gerix.py
 
 
 TODO
-* Add "WPS" attacks with support for both "reaver" and "bully"
-* Switch from python2 to python3
-* Switch from QT4 to QT5
+* Add "WPS" attacks with support for both "reaver", "bully" and pixiewps.
+* Add WPA handshake attack vector.
+* Switch from python2 to python3 (i will need some help with this one)
+* Switch from QT4 to QT5 (this to perhaps)
 
 * Change from "iwconfig" to "iw" or "ip" to get the information,
   Line #136 in "gerix_config.py"
 
   "if exec_command('iwconfig 2>&1 | grep 802.11 | grep' + interface):"
 
-* Add an update checker
+* Add an update checker.
 
 
 
