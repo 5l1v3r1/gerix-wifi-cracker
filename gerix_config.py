@@ -94,7 +94,7 @@ def config_init():
     #     set_random_mac(intf)
     #     set_wifi_mode(intf, 'monitor')
     #     select_interface = intf
-        
+
 
     return 0
 
@@ -155,21 +155,21 @@ def wifi_interface_is_present(interface):
 #
 def set_random_mac(interface):
 
-    if exec_command('ifconfig ' + interface + ' down') != 0:
+    if exec_command('ip link set ' + interface + ' down') != 0:
         return
     if exec_command('macchanger --random ' + interface) != 0:
         return
-    if exec_command('ifconfig ' + interface + ' up') !=0:
+    if exec_command('ip link set ' + interface + ' up') !=0:
         return
 
 #
 # Set wireless interface mode
 #
 def set_wifi_mode(interface, mode):
-    if exec_command('ifconfig ' + interface + ' down') != 0:
+    if exec_command('ip link set ' + interface + ' down') != 0:
         return
-    if exec_command('iwconfig ' + interface + ' mode ' + mode) != 0:
+    if exec_command('iw dev ' + interface + ' set type ' + mode) != 0:
         return
-    if exec_command('ifconfig ' + interface + ' up') != 0:
+    if exec_command('ip link set ' + interface + ' up') != 0:
         return
 

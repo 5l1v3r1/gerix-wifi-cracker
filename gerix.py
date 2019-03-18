@@ -1,4 +1,4 @@
-#!usr/bin/python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import os
@@ -243,7 +243,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         if self.check_options(self.change_mac_int_opt) == 0:
             pass
         else:
-            command = 'ifconfig ' + self.change_mac_int + ' down hw ether `cat ' + config_dir + '.macaddress-backup`; ifconfig ' + self.change_mac_int + ' up'
+            command = 'ip link set ' + self.change_mac_int + ' down hw ether `cat ' + config_dir + '.macaddress-backup`; ip link set ' + self.change_mac_int + ' up'
             ct = Command_thread(command, False)
             ct.start()
 
@@ -253,10 +253,10 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
     # Put the card in monitor mode
     #
     def slot_monitor(self):
-        
+
         if self.check_options(self.periferica_opt) == 0:
             pass
-        
+
         elif self.intf_mode == "Monitor":
             status = commands.getstatusoutput('airmon-ng stop '  + self.periferica)
 
@@ -618,16 +618,16 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         else:
             # backup of old MAC...
             commands.getstatusoutput('if [ -e ' + config_dir + '.macaddress-backup ]; then echo ""; else ifconfig ' + self.change_mac_int + ' | grep HWaddr | sed \'s/^.*HWaddr //\' > ' + config_dir + '.macaddress-backup; fi')
-            status = commands.getstatusoutput('ifconfig ' + self.change_mac_int + ' down hw ether ' + self.change_mac_mac)
+            status = commands.getstatusoutput('ip link set ' + self.change_mac_int + ' down hw ether ' + self.change_mac_mac)
             if status[0] != 0:
                 self.output(status[1], status[0])
                 return
-            status = commands.getstatusoutput('ifconfig ' + self.change_mac_int + ' up')
+            status = commands.getstatusoutput('ip link set ' + self.change_mac_int + ' up')
             if status[0] != 0:
                 self.output(status[1], status[0])
                 return
             self.output('Mac address of interface ' + self.change_mac_int + ' changed in ' + self.change_mac_mac, status[0])
-            
+
     #
     # Enable ip forwarding
     #
@@ -657,11 +657,11 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             return
 
         # disable interface
-        status = commands.getstatusoutput('ifconfig '  + self.periferica + ' down')
+        status = commands.getstatusoutput('ip link set '  + self.periferica + ' down')
         if status[0] != 0:
             self.output(status[1], status[0])
             return
-        
+
         # random MAC address
         status = commands.getstatusoutput('macchanger --random '  + self.periferica)
         if status[0] != 0:
@@ -669,20 +669,20 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             return
 
         # re-enable interface
-        status = commands.getstatusoutput('ifconfig '  + self.periferica + ' up')
+        status = commands.getstatusoutput('ip link set '  + self.periferica + ' up')
         if status[0] !=0:
             self.output(status[1], status[0])
             return
 
         self.output("MAC Address changed: " + self.periferica, status[0])
-        
+
         self.slot_reload_interfaces()
 
     #
     # Select an interface
     #
     def select_interface(self, interface):
-        
+
         numrows = self.table_interfaces.rowCount()
 
         for i in range(0, numrows):
@@ -696,12 +696,12 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
     # Autoload interfaces
     #
     def slot_reload_interfaces(self):
-        
+
         # clear
         numrows = self.table_interfaces.rowCount()
         for i in range(0, numrows):
             self.table_interfaces.removeRow(0)
-        
+
         # load interfaces
         airmon = commands.getoutput("airmon-ng | egrep -e '^[a-z]{2,4}[0-9]'")
         airmon = airmon.split('\n')
@@ -724,30 +724,30 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
                 interface_name=intf[0]
                 chipset_name=intf[1]
                 driver_name=intf[2]
-                
+
             # get mac address
-            current_mac = commands.getoutput("ifconfig " + interface_name + " | grep HWaddr | awk ' { print $5 } ' | tr '-' ':'")
+            current_mac = commands.getoutput("ip link show " + interface_name + " | awk '/ether/ {print $2}'")
             current_mac = current_mac[:17]
             # get mode
             mode = commands.getoutput("iwconfig " + interface_name + " | tr ' ' '\n' | grep -i 'Mode:' | tr ':' ' ' | awk '{print $2 }'")
             # fill table
-            
+
             self.table_interfaces.insertRow(0)
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(interface_name)
             self.table_interfaces.setItem(0, 0,item )
-            
+
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(current_mac)
             self.table_interfaces.setItem(0, 1,item )
-            
+
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(chipset_name)
             self.table_interfaces.setItem(0, 2,item )
-            
+
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText((driver_name))
@@ -768,7 +768,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
 
         if self.check_options(self.mymon_opt | self.intf_mode_opt) == 0:
             return
-        
+
         # clear
         numrows = self.table_networks.rowCount()
         for i in range(0, numrows):
@@ -784,20 +784,20 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         # Get output from Airodump-NG
         thr = RetardedKill("airodump-ng", self.spin_sec.value())
         thr.start()
-        
+
         status = commands.getstatusoutput(scan_command)
         if status[0] != 0:
             self.output(status[1], status[0])
         else:
             self.output("rescan networks",status[0])
-        
+
         output_raw = commands.getoutput('cat /tmp/gerix-scan*.csv')
 
         # Parse output
         output     = output_raw.split("\n")
         uniq_bssid = set()
         order_id=0
-        
+
         for out in output:
             match = re.match(r"([0-9A-Fa-f]{2,2}:[0-9A-Fa-f]{2,2}:[0-9A-Fa-f]{2,2}:[0-9A-Fa-f]{2,2}:[0-9A-Fa-f]{2,2}:[0-9A-Fa-f]{2,2})\s*,\s*\d{4,4}-\d{2,2}-\d{2,2}\s*\d{2,2}:\d{2,2}:\d{2,2}\s*,\s*\d{4,4}-\d{2,2}-\d{2,2}\s*\d{2,2}:\d{2,2}:\d{2,2}\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\w+)\s*,\s*([\w\s]*)\s*,\s*(\w*)\s*,\s*(.\d+)\s*,.+,\s*(.+)\s*,.*", out)
 
@@ -810,7 +810,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
                 continue
 
             uniq_bssid.add(bssid)
-            
+
             channel = match.group(2)
             mb      = match.group(3)
             enc     = match.group(4)
@@ -828,22 +828,22 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(bssid)
             self.table_networks.setItem(order_id, 1,item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(channel)
             self.table_networks.setItem(order_id, 2,item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(pwr)
             self.table_networks.setItem(order_id, 3,item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(enc + ' ' + cipher + ' ' + auth)
             self.table_networks.setItem(order_id, 4, item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEnabled)
             item.setText(mb)
@@ -858,7 +858,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
     # Autoload victim clients
     #
     def slot_autoload_victim_clients(self):
-        
+
         # clear
         self.combo_wep_mac_cfrag.clear()
         self.combo_wpa_mac_hand.clear()
@@ -867,11 +867,11 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         if not glob.glob(config_dir + "*.csv"):
             self.output("no csv files in " + config_dir, 1)
             return
-        
+
         # open dump file
         dump_file = commands.getoutput("cat " + config_dir + "*.csv | egrep -e '^[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}.+[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2}:[0-9a-fA-F]{2,2},' | grep " + self.ac + " | tr ',' ' ' | awk ' { print $1 } '")
-        dump_file = dump_file.split('\n')        
-        
+        dump_file = dump_file.split('\n')
+
         for mac in dump_file:
             self.combo_wep_mac_cfrag.insertItem(0, mac)
             self.combo_wpa_mac_hand.insertItem(0, mac)
@@ -884,30 +884,30 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
 
         # read cracked key
         key = commands.getoutput("cat " + aircrack_log + " | grep 'KEY FOUND' | tr '[]' '\n' | egrep '([a-fA-F0-9]:)+' | tr -d ' \t'")
- 
+
         # insert a row in the database
         self.table_database.insertRow(0)
         item=QtGui.QTableWidgetItem()
         item.setText(essid)
         self.table_database.setItem(0, 0, item)
-    
+
         item=QtGui.QTableWidgetItem()
         item.setText(self.ac)
         self.table_database.setItem(0, 1, item)
-    
+
         item=QtGui.QTableWidgetItem()
         item.setText(self.canale)
         self.table_database.setItem(0, 2, item)
-    
+
         item=QtGui.QTableWidgetItem()
         item.setText(key)
         self.table_database.setItem(0, 3, item)
-    
+
         item=QtGui.QTableWidgetItem()
         item.setText((key_to_ascii(key)))
         self.table_database.setItem(0, 4, item)
-        
-        
+
+
     #
     # Database changed
     #
@@ -917,7 +917,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             return
 
         key = str(self.table_database.item(selrow, 3))
-    
+
         item=QtGui.QTableWidgetItem()
         item.setText((key_to_ascii(key)))
         self.table_database.setItem(selrow, 4, item)
@@ -971,23 +971,23 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             ascii   = key_to_ascii(key)
 
             self.table_database.insertRow(0)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setText(essid)
             self.table_database.setItem(0, 0, item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setText(bssid)
             self.table_database.setItem(0, 1, item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setText(channel)
             self.table_database.setItem(0, 2, item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setText(key)
             self.table_database.setItem(0, 3, item)
-        
+
             item=QtGui.QTableWidgetItem()
             item.setText(ascii)
             self.table_database.setItem(0, 4, item)
@@ -1033,8 +1033,8 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             c.close()
             self.output("Error saving database: " + self.database, 1)
             return
- 
-        
+
+
         self.output("database saved: " + self.database, 0)
 
 
@@ -1048,7 +1048,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
 
     def slot_interface_selected(self):
         selrow = self.table_interfaces.currentRow()
-        
+
         if selrow == -1:
             self.periferica = ''
             self.mymon      = ''
@@ -1060,10 +1060,10 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         self.mymon      = str((self.table_interfaces.item(selrow, 0)).text())
         self.mymac      = str((self.table_interfaces.item(selrow, 1)).text())
         self.intf_mode  = str((self.table_interfaces.item(selrow, 4)).text())
-        
+
         #self.change_mac_int = self.mymon
         #self.line_mac_change_int.setText(self.mymon)
-        #self.change_mac_mac = self.mymac 
+        #self.change_mac_mac = self.mymac
         #self.line_mac_change_mac.setText(self.mymac )
 
     def slot_network_selected(self):
@@ -1076,7 +1076,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         self.canale = str((self.table_networks.item(selrow, 2)).text())
 
         #print self.essid + " " + self.ac + " " + self.canale
-    
+
     def slot_line_database(self):
         self.database = str(self.line_database.text())
 
@@ -1189,11 +1189,11 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
         self.line_gath_logs.setText(config_dir)
 
         # Wireless interfaces
-        self.slot_reload_interfaces()        
+        self.slot_reload_interfaces()
         if selected_interface != '':
             self.periferica = selected_interface
             self.select_interface(selected_interface)
-            
+
 
         # Various directories
         self.line_crack_wpa_dictionary.setText(home_dir)
@@ -1216,7 +1216,7 @@ def init_config_dir():
 
     # check config dir
     if not os.path.exists(config_dir):
-        os.mkdir(config_dir)    
+        os.mkdir(config_dir)
         #subprocess.getstatusoutput('zenity --info --window-icon=/usr/local/buc/icons/attenzione.png --title="Gerix WiFi" --text="Hello and Thanks for using Gerix Wifi Cracker this is the first run, and ~/.gerix-wifi is now created."')
 
     print ('\nConfig directory OK\n')
@@ -1241,33 +1241,25 @@ if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     ui = Main_window_ex()
-   
+
 # initialize config directory
     init_config_dir()
 
 # change working directory
     os.chdir(config_dir)
-	
+
 # performs various checks
     check_all()
- 
+
 # config init function
     config_init()
 # config end function
-    config_end() 
+    config_end()
 
 # fill the GUI
-    
-    ui.fill_input_fields()  
+
+    ui.fill_input_fields()
 
 #    ui.fill_input_fields()
     ui.show()
     sys.exit(app.exec_())
-
-
-
- 
-
-
-
-

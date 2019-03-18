@@ -1,3 +1,6 @@
 All:
-	pyuic gerix.ui -o gerix_gui.py
+	pyuic4 gerix.ui -o gerix_gui.py
 
+clean:
+
+	rm -rf *.pyc
