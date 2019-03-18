@@ -188,7 +188,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
                 return 0
 
         if self.intf_mode_opt & options > 0:
-            if self.intf_mode != 'Monitor':
+            if self.intf_mode != 'monitor':
                 self.output("interface not in monitor mode", 1)
                 return 0
 
@@ -579,7 +579,7 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
             self.output("no channel specified", 1)
         elif self.mymon == "":
             self.output("monitor interface is not set", 1)
-        elif self.intf_mode != 'Monitor':
+        elif self.intf_mode != 'monitor':
             self.output("interface not in monitor mode", 1)
         else:
             # prepare the command
@@ -726,10 +726,10 @@ class Main_window_ex(QMainWindow, Ui_Main_window):
                 driver_name=intf[2]
 
             # get mac address
-            current_mac = commands.getoutput("ip link show " + interface_name + " | awk '/ether/ {print $2}'")
+            current_mac = commands.getoutput("cat /sys/class/net/"+ interface_name +"/address")
             current_mac = current_mac[:17]
             # get mode
-            mode = commands.getoutput("iwconfig " + interface_name + " | tr ' ' '\n' | grep -i 'Mode:' | tr ':' ' ' | awk '{print $2 }'")
+            mode = commands.getoutput("iw " + interface_name + " info | grep type |  awk '{print $2 }'")
             # fill table
 
             self.table_interfaces.insertRow(0)
