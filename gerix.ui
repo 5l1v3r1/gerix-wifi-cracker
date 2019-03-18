@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>648</width>
+    <width>693</width>
     <height>685</height>
    </rect>
   </property>
@@ -37,36 +37,10 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="4" column="1">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="0" column="0" colspan="2">
      <widget class="QTabWidget" name="tabWidget2">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -118,8 +92,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>611</width>
-             <height>457</height>
+             <width>653</width>
+             <height>491</height>
             </rect>
            </property>
            <attribute name="label">
@@ -404,8 +378,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>608</width>
-             <height>321</height>
+             <width>653</width>
+             <height>343</height>
             </rect>
            </property>
            <attribute name="label">
@@ -467,8 +441,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>594</width>
-             <height>354</height>
+             <width>653</width>
+             <height>359</height>
             </rect>
            </property>
            <attribute name="label">
@@ -572,7 +546,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>594</width>
+             <width>639</width>
              <height>504</height>
             </rect>
            </property>
@@ -735,8 +709,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>298</width>
-             <height>225</height>
+             <width>653</width>
+             <height>343</height>
             </rect>
            </property>
            <attribute name="label">
@@ -929,8 +903,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>608</width>
-             <height>405</height>
+             <width>489</width>
+             <height>265</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1052,7 +1026,7 @@
              <x>0</x>
              <y>0</y>
              <width>652</width>
-             <height>424</height>
+             <height>371</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1286,8 +1260,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>608</width>
-             <height>372</height>
+             <width>550</width>
+             <height>112</height>
             </rect>
            </property>
            <attribute name="label">
