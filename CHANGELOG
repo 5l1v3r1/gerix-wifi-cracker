@@ -1,5 +1,7 @@
 19 March 2019:
+- Added icons to the configuration
 - Continue on WPS attack tabs, adding the basics to it.
+- Other minor fixes.
 
 18 March 2018:
 - Fixed gettings strings from newer systems (monitor mode wasn't detected, added new method)
