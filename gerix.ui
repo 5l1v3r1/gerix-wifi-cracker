@@ -313,7 +313,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_User Interface_1670635.svg</normaloff>../noun_User Interface_1670635.svg</iconset>
+                 <normaloff>gfx/noun_User_Interface_1670635.svg</normaloff>gfx/noun_User_Interface_1670635.svg</iconset>
                </property>
               </column>
               <column>
@@ -322,7 +322,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_Ethernet_542785.svg</normaloff>../noun_Ethernet_542785.svg</iconset>
+                 <normaloff>gfx/noun_Ethernet_542785.svg</normaloff>gfx/noun_Ethernet_542785.svg</iconset>
                </property>
               </column>
               <column>
@@ -331,7 +331,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_chipset_1595437.svg</normaloff>../noun_chipset_1595437.svg</iconset>
+                 <normaloff>gfx/noun_chipset_1595437.svg</normaloff>gfx/noun_chipset_1595437.svg</iconset>
                </property>
               </column>
               <column>
@@ -349,7 +349,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_Question_338831.svg</normaloff>../noun_Question_338831.svg</iconset>
+                 <normaloff>gfx/noun_Question_338831.svg</normaloff>gfx/noun_Question_338831.svg</iconset>
                </property>
               </column>
              </widget>
@@ -362,7 +362,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_Document_1146377.svg</normaloff>../noun_Document_1146377.svg</iconset>
+                 <normaloff>gfx/noun_Document_1146377.svg</normaloff>gfx/noun_Document_1146377.svg</iconset>
                </property>
               </column>
               <column>
@@ -371,7 +371,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_User Interface_1670635.svg</normaloff>../noun_User Interface_1670635.svg</iconset>
+                 <normaloff>gfx/noun_User_Interface_1670635.svg</normaloff>gfx/noun_User_Interface_1670635.svg</iconset>
                </property>
               </column>
               <column>
@@ -380,7 +380,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_hashtag_1808612.svg</normaloff>../noun_hashtag_1808612.svg</iconset>
+                 <normaloff>gfx/noun_hashtag_1808612.svg</normaloff>gfx/noun_hashtag_1808612.svg</iconset>
                </property>
               </column>
               <column>
@@ -389,7 +389,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_signal_2308127.svg</normaloff>../noun_signal_2308127.svg</iconset>
+                 <normaloff>gfx/noun_signal_2308127.svg</normaloff>gfx/noun_signal_2308127.svg</iconset>
                </property>
               </column>
               <column>
@@ -398,7 +398,7 @@
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../noun_password_1199277.svg</normaloff>../noun_password_1199277.svg</iconset>
+                 <normaloff>gfx/noun_password_1199277.svg</normaloff>gfx/noun_password_1199277.svg</iconset>
                </property>
               </column>
              </widget>
