@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>724</width>
-    <height>693</height>
+    <height>696</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -99,7 +99,7 @@
              <x>0</x>
              <y>0</y>
              <width>684</width>
-             <height>485</height>
+             <height>488</height>
             </rect>
            </property>
            <attribute name="label">
@@ -425,7 +425,7 @@
              <x>0</x>
              <y>0</y>
              <width>684</width>
-             <height>353</height>
+             <height>356</height>
             </rect>
            </property>
            <attribute name="label">
@@ -852,7 +852,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="textLabel4_4_3">
           <property name="text">
-           <string>&lt;h2&gt;Welcome in WEP Attacks Control Panel&lt;/h2&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;WEP Sniffing / Attacks&lt;/span&gt;&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="wordWrap">
            <bool>false</bool>
@@ -869,7 +869,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="textLabel4_4_2_3">
           <property name="text">
-           <string>&lt;h2&gt;Welcome in WPA Attacks Control Panel&lt;/h2&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;WPA/WPA2 Sniffing &amp;amp; Attacks&lt;/span&gt;&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="wordWrap">
            <bool>false</bool>
@@ -887,7 +887,7 @@
              <x>0</x>
              <y>0</y>
              <width>684</width>
-             <height>419</height>
+             <height>422</height>
             </rect>
            </property>
            <attribute name="label">
@@ -950,7 +950,7 @@
              <x>0</x>
              <y>0</y>
              <width>684</width>
-             <height>411</height>
+             <height>422</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1478,7 +1478,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="textLabel4_4_2_3_2">
           <property name="text">
-           <string>&lt;h2&gt;Welcome in Fake Access Point Control Panel&lt;/h2&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Fake Access Point Control Panel&lt;/span&gt;&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="wordWrap">
            <bool>false</bool>
@@ -1496,7 +1496,7 @@
              <x>0</x>
              <y>0</y>
              <width>684</width>
-             <height>452</height>
+             <height>455</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1730,7 +1730,7 @@
         <string>Cracking</string>
        </attribute>
        <layout class="QGridLayout">
-        <item row="1" column="0">
+        <item row="0" column="0">
          <widget class="QToolBox" name="toolBox5_3">
           <property name="currentIndex">
            <number>0</number>
@@ -1741,7 +1741,7 @@
              <x>0</x>
              <y>0</y>
              <width>684</width>
-             <height>386</height>
+             <height>389</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1896,8 +1896,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>542</width>
-             <height>180</height>
+             <width>684</width>
+             <height>356</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1961,16 +1961,11 @@
             </item>
            </layout>
           </widget>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="textLabel4_4_2_2_3">
-          <property name="text">
-           <string>&lt;h2&gt;Welcome in Cracking Control Panel&lt;/h2&gt;</string>
-          </property>
-          <property name="wordWrap">
-           <bool>false</bool>
-          </property>
+          <widget class="QWidget" name="page_3">
+           <attribute name="label">
+            <string>WPA Hashcat cracking</string>
+           </attribute>
+          </widget>
          </widget>
         </item>
        </layout>
