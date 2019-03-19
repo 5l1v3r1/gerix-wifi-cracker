@@ -1,18 +1,20 @@
 
-Gerix Wifi Cracker v3
+Gerix Wifi Cracker v3.1
 
 REQUISITES:
+-----------------------------------------------------------------------------------------------
+Dependencies (this tools assume you run Kali):
+apt-get install qt4-dev-tools pyqt4-dev-tools python
 
-You need the modules:
-qt (v.4)
 
 LAUNCH:
-
+-----------------------------------------------------------------------------------------------
 To launch the program use:
 $ python gerix.py
 
 
 TODO
+-----------------------------------------------------------------------------------------------
 * Add "WPS" attacks with support for both "reaver", "bully" and pixiewps.
 * Add WPA handshake attack vector.
 * Switch from python2 to python3 (i will need some help with this one)
@@ -29,7 +31,7 @@ TODO
 
 
 NOTE:
-
+-----------------------------------------------------------------------------------------------
 For copy and paste in xterm windows you can use the shortcuts CTRL-INS
 and SHIFT-INS.
 In alternative, you can select the text with the mouse, and use the third
