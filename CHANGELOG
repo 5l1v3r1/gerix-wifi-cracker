@@ -1,3 +1,6 @@
+19 March 2019:
+- Continue on WPS attack tabs, adding the basics to it.
+
 18 March 2018:
 - Fixed gettings strings from newer systems (monitor mode wasn't detected, added new method)
 - Changed "iwconfig" with the use of "iw" (iwconfig is deprecated)
